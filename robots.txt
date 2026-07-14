@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin-login.html
+Disallow: /admin-dashboard.html
+Disallow: /api/
+
+Sitemap: https://www.creaseedits.pk/sitemap.xml

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mens Western Clothing — Crease Edits</title>
+<meta name="description" content="Tailored shirts, blazers, denim and knitwear for men.">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  .shop-layout{ display:grid; grid-template-columns: 260px 1fr; gap: var(--sp-5); align-items:start; }
+  .filters-panel{ position:sticky; top: calc(var(--nav-h) + 20px); }
+  .filter-group{ margin-bottom: var(--sp-4); }
+  .filter-group h4{ font-family:var(--font-body); font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:.8rem; }
+  .check-row{ display:flex; align-items:center; gap:.6rem; margin-bottom:.6rem; font-size:.9rem; }
+</style>
+</head>
+<body data-page="men.html">
+  <div class="page-loader"><div class="mark">Crease Edits</div><div class="bar"></div></div>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Home</a> / Men</div>
+        <p class="eyebrow" style="justify-content:center;">Category</p>
+        <h1>Men</h1>
+        <p class="muted" style="max-width:520px; margin-inline:auto;">Tailored shirts, blazers, denim and knitwear for men.</p>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="container shop-layout">
+        <aside class="filters-panel glass-card" style="padding: var(--sp-4);">
+          <div class="filter-group">
+            <h4>Search</h4>
+            <input type="search" id="searchInput" placeholder="Search products…" class="form-field" style="width:100%; padding:.7rem 1rem; border-radius:10px; border:1.5px solid rgba(0,0,53,.14);">
+          </div>
+          <div class="filter-group">
+            <h4>Max Price: <span id="priceOutput">$300</span></h4>
+            <input type="range" id="priceRange" min="40" max="300" value="300" style="width:100%;">
+          </div>
+          <button class="btn btn-ghost btn-block btn-sm" id="clearFilters">Clear Filters</button>
+        </aside>
+
+        <div>
+          <div class="flex justify-between items-center" style="margin-bottom: var(--sp-3);">
+            <span class="muted" id="resultCount">Loading…</span>
+            <select id="sortSelect" style="padding:.6rem 1rem; border-radius:10px; border:1.5px solid rgba(0,0,53,.14); background:#fff;">
+              <option value="featured">Sort: Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+          <div class="grid grid-3" id="productGrid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
+  <script>document.addEventListener("components:ready", () => initShopPage("men"));</script>
+</body>
+</html>

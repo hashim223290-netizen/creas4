@@ -1,0 +1,58 @@
+/* ==========================================================================
+   CLEAN EDITS — Responsive
+   Breakpoints: 1200 (laptop), 992 (tablet-l), 768 (tablet), 560 (mobile)
+   ========================================================================== */
+
+@media (max-width: 1200px){
+  .grid-4{ grid-template-columns: repeat(3,1fr); }
+  .footer-grid{ grid-template-columns: 1.2fr 1fr 1fr; }
+  .footer-grid .footer-col-newsletter{ grid-column: 1 / -1; }
+}
+
+@media (max-width: 992px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:flex; }
+  .grid-3{ grid-template-columns: repeat(2,1fr); }
+  .grid-4{ grid-template-columns: repeat(2,1fr); }
+  .hero-split{ grid-template-columns: 1fr !important; }
+  .hero-tagline-rotated{ display:none; }
+  .cursor-glow{ display:none; }
+}
+
+@media (max-width: 768px){
+  :root{ --nav-h: 68px; }
+  .grid-2{ grid-template-columns: 1fr; }
+  .footer-grid{ grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+  .form-row{ grid-template-columns: 1fr; }
+  section{ padding: var(--sp-5) 0; }
+  .shop-layout{ grid-template-columns: 1fr !important; }
+  .filters-panel{ position:static !important; margin-bottom: var(--sp-4); }
+  h1{ font-size: 2.4rem; }
+
+  /* Navbar: tighten spacing so brand + icons + toggle fit without overflow */
+  .container{ padding-inline: var(--sp-3); }
+  .navbar .nav-actions{ gap: .5rem; }
+  .navbar .icon-btn{ width:36px; height:36px; }
+  .navbar .icon-btn svg{ width:16px; height:16px; }
+  .navbar .brand{ font-size:1.25rem; }
+}
+
+@media (max-width: 560px){
+  .grid-3, .grid-4{ grid-template-columns: 1fr; gap: var(--sp-3); }
+  .footer-grid{ grid-template-columns: 1fr; }
+  .footer-bottom{ flex-direction:column; align-items:flex-start; }
+  .btn{ padding: .85rem 1.6rem; font-size:.78rem; }
+  .container{ padding-inline: var(--sp-2); }
+  .newsletter-form{ flex-direction:column; }
+  .product-card .quick-actions{ opacity:1; transform:none; position:static; flex-direction:row; padding:8px 0 0; }
+  .product-card .thumb{ aspect-ratio: 1/1; }
+
+  /* Navbar: even tighter on small phones -- prevent icon row from wrapping/overflowing */
+  .navbar .nav-actions{ gap: .35rem; }
+  .navbar .icon-btn{ width:32px; height:32px; }
+  .navbar .icon-btn svg{ width:15px; height:15px; }
+  .navbar .brand{ font-size:1.1rem; }
+  .nav-toggle{ width:26px; }
+  .mobile-panel{ padding: var(--sp-4) var(--sp-3); }
+  .mobile-panel a{ font-size:1.3rem; }
+}

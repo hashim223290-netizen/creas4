@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Sign In — Crease Edits</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="admin-login.html" style="background: var(--ink);">
+  <main id="main">
+    <section style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding: var(--sp-4);">
+      <div class="glass-card reveal-zoom is-visible" style="padding: var(--sp-5); max-width:420px; width:100%; background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12);">
+        <div class="text-center" style="margin-bottom: var(--sp-3);">
+          <div class="brand" style="justify-content:center; color: var(--cream); font-size:1.8rem;">Crease<span>Edits</span></div>
+          <p class="eyebrow" style="justify-content:center; margin-top:.6rem;">Admin Panel</p>
+        </div>
+        <form id="adminLoginForm">
+          <div class="form-field">
+            <label style="color: var(--cream);" for="adminUser">Admin email</label>
+            <input type="email" id="adminUser" required style="background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); color:var(--cream);">
+          </div>
+          <div class="form-field">
+            <label style="color: var(--cream);" for="adminPass">Password</label>
+            <input type="password" id="adminPass" required style="background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); color:var(--cream);">
+          </div>
+          <p class="error" id="adminLoginError" hidden style="color:#ff8577; font-size:.82rem; margin-bottom: var(--sp-2);"></p>
+          <button type="submit" class="btn btn-primary btn-block">Sign In to Dashboard</button>
+        </form>
+        <p class="muted text-center" style="margin-top: var(--sp-3); font-size:.78rem;">Demo credentials: admin@creaseedits.pk / cre@seEdits2026</p>
+        <p class="text-center" style="margin-top: var(--sp-2);"><a href="index.html" style="color: var(--gold); font-size:.85rem;">← Back to store</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

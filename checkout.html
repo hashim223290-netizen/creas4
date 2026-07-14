@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Crease Edits</title>
+<meta name="description" content="Complete your Crease Edits order.">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  .pay-tabs{ display:flex; gap:.6rem; margin-bottom: var(--sp-3); flex-wrap:wrap; }
+  .pay-tab{ padding:.7rem 1.2rem; border-radius:10px; border:1.5px solid rgba(0,0,53,.14); background:#fff; font-weight:600; font-size:.85rem; }
+  .pay-tab.is-active{ border-color:var(--ink); background:var(--ink); color:var(--cream); }
+</style>
+</head>
+<body data-page="checkout.html">
+  <div class="page-loader"><div class="mark">Crease Edits</div><div class="bar"></div></div>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Home</a> / <a href="cart.html">Cart</a> / Checkout</div>
+        <p class="eyebrow" style="justify-content:center;">Step 2 of 3</p>
+        <h1>Checkout</h1>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="container grid grid-2" style="align-items:start; grid-template-columns: 1.5fr 1fr;">
+        <form id="checkoutForm" class="glass-card" style="padding: var(--sp-5);">
+          <h3>Customer Information</h3>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="ckName">Full name</label>
+              <input type="text" id="ckName" required>
+            </div>
+            <div class="form-field">
+              <label for="ckEmail">Email</label>
+              <input type="email" id="ckEmail" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="ckPhone">Phone number</label>
+            <input type="tel" id="ckPhone" required>
+          </div>
+
+          <h3 style="margin-top: var(--sp-4);">Shipping Address</h3>
+          <div class="form-field">
+            <label for="ckAddress">Street address</label>
+            <input type="text" id="ckAddress" required>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="ckCity">City</label>
+              <input type="text" id="ckCity" required>
+            </div>
+            <div class="form-field">
+              <label for="ckZip">Postal code</label>
+              <input type="text" id="ckZip" required>
+            </div>
+          </div>
+
+          <h3 style="margin-top: var(--sp-4);">Payment Method</h3>
+          <div class="pay-tabs">
+            <button type="button" class="pay-tab is-active" data-target="payCard">Card</button>
+            <button type="button" class="pay-tab" data-target="payCod">Cash on Delivery</button>
+            <button type="button" class="pay-tab" data-target="payWallet">Mobile Wallet</button>
+          </div>
+          <div id="payCard" class="pay-panel">
+            <div class="form-field">
+              <label for="ckCardNumber">Card number</label>
+              <input type="text" id="ckCardNumber" placeholder="•••• •••• •••• ••••">
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="ckExpiry">Expiry</label>
+                <input type="text" id="ckExpiry" placeholder="MM/YY">
+              </div>
+              <div class="form-field">
+                <label for="ckCvv">CVV</label>
+                <input type="text" id="ckCvv" placeholder="•••">
+              </div>
+            </div>
+          </div>
+          <div id="payCod" class="pay-panel" hidden>
+            <p class="muted">Pay in cash when your order arrives. A small COD handling fee may apply.</p>
+          </div>
+          <div id="payWallet" class="pay-panel" hidden>
+            <div class="form-field">
+              <label for="ckWalletNumber">Wallet number</label>
+              <input type="text" id="ckWalletNumber" placeholder="03XX XXXXXXX">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--sp-4);" id="placeOrderBtn">Place Order</button>
+        </form>
+
+        <div class="glass-card" style="padding: var(--sp-4); position:sticky; top: calc(var(--nav-h) + 20px);">
+          <h3>Order Summary</h3>
+          <div id="checkoutSummary"></div>
+          <div class="flex justify-between" style="padding:.4rem 0; margin-top:.6rem;"><span class="muted">Subtotal</span><span id="sumSubtotal">$0.00</span></div>
+          <div class="flex justify-between" style="padding:.4rem 0;"><span class="muted">Shipping</span><span id="sumShipping">Free</span></div>
+          <div class="flex justify-between" style="padding:.4rem 0;"><span class="muted">Tax (5%)</span><span id="sumTax">$0.00</span></div>
+          <div class="divider" style="margin:.8rem 0;"></div>
+          <div class="flex justify-between" style="font-weight:700; font-size:1.15rem;"><span>Total</span><span id="sumTotal">$0.00</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

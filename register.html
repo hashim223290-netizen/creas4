@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — Crease Edits</title>
+<meta name="description" content="Create a Crease Edits account.">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="register.html">
+  <div class="page-loader"><div class="mark">Crease Edits</div><div class="bar"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section style="padding-top: calc(var(--nav-h) + var(--sp-5)); min-height:80vh; display:flex; align-items:center;">
+      <div class="container" style="max-width:440px;">
+        <div class="glass-card reveal-zoom is-visible" style="padding: var(--sp-5);">
+          <p class="eyebrow" style="justify-content:center;">Join Crease Edits</p>
+          <h1 style="text-align:center; font-size:2rem;">Create Account</h1>
+          <form id="registerForm">
+            <div class="form-field">
+              <label for="registerName">Full name</label>
+              <input type="text" id="registerName" required>
+              <span class="error"></span>
+            </div>
+            <div class="form-field">
+              <label for="registerEmail">Email</label>
+              <input type="email" id="registerEmail" required>
+              <span class="error"></span>
+            </div>
+            <div class="form-field">
+              <label for="registerPassword">Password</label>
+              <input type="password" id="registerPassword" required>
+              <span class="error"></span>
+            </div>
+            <div class="form-field">
+              <label for="registerConfirm">Confirm password</label>
+              <input type="password" id="registerConfirm" required>
+              <span class="error"></span>
+            </div>
+            <label class="flex items-center gap-2" style="font-size:.85rem; margin-bottom: var(--sp-3);"><input type="checkbox" required> I agree to the <a href="terms.html" style="color:var(--glow);">Terms</a> &amp; <a href="privacy.html" style="color:var(--glow);">Privacy Policy</a></label>
+            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+          </form>
+          <p class="text-center muted" style="margin-top: var(--sp-3);">Already have an account? <a href="login.html" style="color:var(--gold); font-weight:600;">Sign in</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

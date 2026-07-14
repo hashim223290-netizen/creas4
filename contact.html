@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Crease Edits</title>
+<meta name="description" content="Visit Crease Edits in Rawalpindi or reach us by phone and email.">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="contact.html">
+  <div class="page-loader"><div class="mark">Crease Edits</div><div class="bar"></div></div>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Home</a> / Contact</div>
+        <p class="eyebrow" style="justify-content:center;">Get in touch</p>
+        <h1>Contact Us</h1>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="container grid grid-2" style="align-items:start;">
+        <div class="reveal-left">
+          <h3>Store Information</h3>
+          <div class="glass-card" style="padding: var(--sp-4); margin-bottom: var(--sp-3);">
+            <p style="margin-bottom:.4rem;"><strong>Address</strong></p>
+            <p class="muted">Street 1, 5th Road, Bangsar Plaza Commercial Market Rd,<br>Block B Satellite Town, Rawalpindi, 46300, Pakistan</p>
+            <p style="margin-bottom:.4rem;"><strong>Phone</strong></p>
+            <p class="muted"><a href="tel:03229274852">0322 9274852</a></p>
+            <p style="margin-bottom:.4rem;"><strong>Email</strong></p>
+            <p class="muted"><a href="mailto:hello@creaseedits.pk">hello@creaseedits.pk</a></p>
+          </div>
+
+          <h3>Business Hours</h3>
+          <div class="glass-card" style="padding: var(--sp-4);">
+            <div class="flex justify-between" style="padding:.4rem 0; border-bottom:1px solid rgba(0,0,53,.08);"><span>Monday – Friday</span><span>11:00 AM – 9:00 PM</span></div>
+            <div class="flex justify-between" style="padding:.4rem 0; border-bottom:1px solid rgba(0,0,53,.08);"><span>Saturday</span><span>11:00 AM – 10:00 PM</span></div>
+            <div class="flex justify-between" style="padding:.4rem 0;"><span>Sunday</span><span>1:00 PM – 8:00 PM</span></div>
+          </div>
+
+          <div class="glass-card" style="padding:.6rem; border-radius: var(--radius); overflow:hidden; margin-top: var(--sp-3);">
+            <iframe
+              title="Crease Edits store location map"
+              src="https://www.google.com/maps?q=Street+1,+5th+Road,+Bangsar+Plaza+Commercial+Market+Rd,+Block+B+Satellite+Town,+Rawalpindi,+46300,+Pakistan&output=embed"
+              width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="glass-card reveal-right" style="padding: var(--sp-5);">
+          <h3>Send us a message</h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contactName">Full name</label>
+                <input type="text" id="contactName" required>
+                <span class="error">Please enter your name.</span>
+              </div>
+              <div class="form-field">
+                <label for="contactEmail">Email</label>
+                <input type="email" id="contactEmail" required>
+                <span class="error">Please enter a valid email.</span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="contactSubject">Subject</label>
+              <select id="contactSubject">
+                <option>Order enquiry</option>
+                <option>Product question</option>
+                <option>Returns &amp; exchanges</option>
+                <option>Wholesale / partnerships</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" rows="5" required></textarea>
+              <span class="error">Please enter a message.</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+            <p class="hint" id="contactSuccess" style="color:var(--gold); text-align:center; margin-top:.8rem;" hidden>Thanks — we'll reply within one business day.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("components:ready", () => {
+      const form = document.getElementById("contactForm");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let ok = true;
+        [["contactName",""],["contactEmail",""],["contactMessage",""]].forEach(([id]) => {
+          const field = document.getElementById(id);
+          const wrap = field.closest(".form-field");
+          const valid = id === "contactEmail" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value) : field.value.trim().length > 0;
+          wrap.classList.toggle("has-error", !valid);
+          if (!valid) ok = false;
+        });
+        if (!ok) return;
+        document.getElementById("contactSuccess").hidden = false;
+        form.reset();
+      });
+    });
+  </script>
+</body>
+</html>

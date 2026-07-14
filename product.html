@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — Crease Edits</title>
+<meta name="description" content="Product details, sizing and reviews from Crease Edits.">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  .pdp-layout{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); align-items:start; }
+  .thumb-btn{ width:78px; aspect-ratio:3/4; border-radius:10px; overflow:hidden; border:2px solid transparent; padding:0; background:none; }
+  .thumb-btn.is-selected{ border-color: var(--ink); }
+  .thumb-btn img{ width:100%; height:100%; object-fit:cover; }
+  #galleryMain{ transition: opacity .2s ease; aspect-ratio:3/4; width:100%; object-fit:cover; border-radius: var(--radius); }
+  .variant-btn{ padding:.5rem 1rem; border-radius:8px; border:1.5px solid rgba(0,0,53,.16); background:#fff; font-size:.85rem; transition: all .25s; }
+  .variant-btn.is-selected{ border-color: var(--ink); background: var(--ink); color:var(--cream); }
+  .qty-control{ display:flex; align-items:center; border:1.5px solid rgba(0,0,53,.16); border-radius:999px; overflow:hidden; width:fit-content; }
+  .qty-control button{ width:40px; height:40px; background:none; border:none; font-size:1.1rem; }
+  .qty-control input{ width:44px; text-align:center; border:none; font-size:1rem; }
+  .tab-btn{ padding: .8rem 1.4rem; border:none; background:none; font-weight:600; color:var(--ash); border-bottom:2px solid transparent; }
+  .tab-btn.is-active{ color:var(--ink); border-color: var(--gold); }
+</style>
+</head>
+<body data-page="product.html">
+  <div class="page-loader"><div class="mark">Crease Edits</div><div class="bar"></div></div>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section style="padding-top: calc(var(--nav-h) + var(--sp-4)); padding-bottom: var(--sp-3);">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Home</a> / <a href="shop.html" id="crumbCategory">Shop</a> / <span id="productName">Product</span></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;" id="productMain">
+      <div class="container pdp-layout">
+        <div>
+          <img id="galleryMain" src="" alt="" width="700" height="900">
+          <div class="flex gap-2" id="galleryThumbs" style="margin-top: var(--sp-2); overflow-x:auto;"></div>
+        </div>
+
+        <div>
+          <div class="cat muted" style="text-transform:uppercase; letter-spacing:.08em; font-size:.78rem;"></div>
+          <h1 id="productName2" style="margin-top:.3rem;"></h1>
+          <div class="flex items-center gap-2" style="margin-bottom: var(--sp-2);">
+            <span class="stars" id="productStars"></span>
+            <span class="muted" id="productReviewCount" style="font-size:.85rem;"></span>
+          </div>
+          <div id="productPrice" style="font-size:1.5rem; margin-bottom: var(--sp-2);"></div>
+          <div class="stock" id="productStock" style="margin-bottom: var(--sp-3);"></div>
+          <p id="productDesc" style="max-width:480px;"></p>
+
+          <div class="form-field">
+            <label>Size</label>
+            <div class="flex gap-2" id="sizeOptions"></div>
+          </div>
+          <div class="form-field">
+            <label>Colour</label>
+            <div class="flex gap-2" id="colorOptions"></div>
+          </div>
+          <div class="form-field">
+            <label>Quantity</label>
+            <div class="qty-control">
+              <button type="button" id="qtyMinus" aria-label="Decrease quantity">−</button>
+              <input type="text" id="qtyInput" value="1" readonly aria-label="Quantity">
+              <button type="button" id="qtyPlus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+
+          <div class="flex gap-3" style="margin-top: var(--sp-3); flex-wrap:wrap;">
+            <button class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+            <button class="btn btn-outline" id="wishToggleBtn">♡ Add to Wishlist</button>
+            <button class="btn btn-ghost" id="shareBtn" aria-label="Share product">Share</button>
+          </div>
+
+          <div class="divider"></div>
+          <p class="muted" style="font-size:.85rem;">Free shipping on orders over $100 · 30-day returns · Secure checkout</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs: description / reviews -->
+    <section>
+      <div class="container">
+        <div class="flex gap-2" style="border-bottom:1px solid rgba(0,0,53,.1); margin-bottom: var(--sp-4);">
+          <button class="tab-btn is-active" data-target="tabDesc">Description</button>
+          <button class="tab-btn" data-target="tabReviews">Reviews</button>
+        </div>
+        <div id="tabDesc" class="tab-panel">
+          <p id="productDescFull" style="max-width:640px;"></p>
+          <ul class="muted" style="list-style:disc; padding-left:1.2rem; max-width:520px;">
+            <li>Made from premium, responsibly-sourced materials</li>
+            <li>True to size — see the size guide for measurements</li>
+            <li>Machine washable / care instructions on the label</li>
+          </ul>
+        </div>
+        <div id="tabReviews" class="tab-panel" hidden>
+          <div class="grid grid-2" style="align-items:start;">
+            <div class="rating-summary">
+              <span class="big" id="ratingBig">4.7</span>
+              <div>
+                <div class="stars" id="ratingBigStars">★★★★★</div>
+                <div class="muted" id="ratingBigCount" style="font-size:.82rem;"></div>
+              </div>
+            </div>
+            <div id="reviewsList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section style="background:var(--cream-dim);">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">You might also like</p>
+          <h2>Related Products</h2>
+        </div>
+        <div class="grid grid-4" id="relatedGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/product.js"></script>
+  <script>
+    document.addEventListener("components:ready", () => {
+      // sync the two name spots (breadcrumb span + h1) once product.js fills productName
+      const obs = new MutationObserver(() => { document.getElementById("productName2").textContent = document.getElementById("productName").textContent; document.getElementById("productDescFull").textContent = document.getElementById("productDesc").textContent; });
+      obs.observe(document.getElementById("productName"), { childList:true });
+    });
+  </script>
+</body>
+</html>

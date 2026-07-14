@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Crease Edits</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  body{ background: var(--cream-dim); }
+  .admin-shell{ display:grid; grid-template-columns: 240px 1fr; min-height:100vh; }
+  .admin-sidebar{ background: var(--ink); color: var(--cream); padding: var(--sp-4) var(--sp-3); }
+  .admin-sidebar .brand{ color: var(--cream); font-size:1.3rem; margin-bottom: var(--sp-5); }
+  .admin-tab{ display:block; width:100%; text-align:left; padding: .8rem 1rem; border-radius:10px; background:none; border:none; color: rgba(250,247,241,.7); font-weight:500; margin-bottom:.4rem; }
+  .admin-tab.is-active{ background: rgba(255,255,255,.1); color: var(--cream); }
+  .admin-main{ padding: var(--sp-4) var(--sp-5); }
+  .stat-card{ padding: var(--sp-3) var(--sp-4); background:#fff; border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,53,.06); }
+  .stat-card .num{ font-family: var(--font-display); font-size:1.8rem; }
+  table{ width:100%; border-collapse: collapse; background:#fff; border-radius: var(--radius); overflow:hidden; }
+  th, td{ padding: .8rem 1rem; text-align:left; border-bottom:1px solid rgba(0,0,53,.06); font-size:.88rem; }
+  th{ background: var(--cream-dim); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; }
+  @media (max-width: 900px){ .admin-shell{ grid-template-columns: 1fr; } .admin-sidebar{ display:flex; overflow-x:auto; gap:.4rem; padding: var(--sp-2); } .admin-sidebar .brand{ display:none; } .admin-tab{ white-space:nowrap; margin-bottom:0; } }
+</style>
+</head>
+<body data-page="admin-dashboard.html">
+  <div id="adminDashboard" class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="brand">Crease<span style="color:var(--gold); font-style:italic; font-weight:400;">Edits</span></div>
+      <button class="admin-tab is-active" data-target="panelOverview">Overview</button>
+      <button class="admin-tab" data-target="panelProducts">Products</button>
+      <button class="admin-tab" data-target="panelOrders">Orders</button>
+      <div style="margin-top: var(--sp-5);">
+        <button class="btn btn-outline btn-sm btn-block" id="adminLogoutBtn" style="color:var(--cream); border-color:rgba(255,255,255,.3);">Log Out</button>
+        <a href="index.html" class="btn btn-ghost btn-sm btn-block" style="margin-top:.6rem; background:transparent; color:rgba(250,247,241,.7); border-color:transparent;">← View Store</a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <!-- Overview -->
+      <div id="panelOverview" class="admin-panel">
+        <h1 style="font-size:1.8rem;">Dashboard Overview</h1>
+        <div class="grid grid-4">
+          <div class="stat-card"><div class="muted" style="font-size:.78rem;">Total Products</div><div class="num" id="statProducts">—</div></div>
+          <div class="stat-card"><div class="muted" style="font-size:.78rem;">Total Orders</div><div class="num" id="statOrders">—</div></div>
+          <div class="stat-card"><div class="muted" style="font-size:.78rem;">Revenue</div><div class="num" id="statRevenue">—</div></div>
+          <div class="stat-card"><div class="muted" style="font-size:.78rem;">Low Stock</div><div class="num" id="statLowStock">—</div></div>
+        </div>
+        <p class="muted" style="margin-top: var(--sp-4);">Use the tabs on the left to manage products and view incoming orders.</p>
+      </div>
+
+      <!-- Products -->
+      <div id="panelProducts" class="admin-panel" hidden>
+        <h1 style="font-size:1.8rem;">Product Management</h1>
+
+        <div class="glass-card" style="padding: var(--sp-4); margin-bottom: var(--sp-4); background:#fff;">
+          <h3>Add New Product</h3>
+          <form id="addProductForm" class="grid grid-4" style="align-items:end;">
+            <div class="form-field mb-0"><label for="newProductName">Name</label><input type="text" id="newProductName" required></div>
+            <div class="form-field mb-0">
+              <label for="newProductCategory">Category</label>
+              <select id="newProductCategory">
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="shoes">Shoes</option>
+                <option value="accessories">Accessories</option>
+              </select>
+            </div>
+            <div class="form-field mb-0"><label for="newProductPrice">Price ($)</label><input type="number" id="newProductPrice" min="0" step="0.01" required></div>
+            <div class="form-field mb-0"><label for="newProductStock">Stock</label><input type="number" id="newProductStock" min="0" value="10"></div>
+            <div class="form-field mb-0">
+              <label for="newProductImage">Image</label>
+              <input type="file" id="newProductImage" accept="image/png,image/jpeg,image/webp,image/gif">
+            </div>
+            <div style="grid-column: 1/-1; display:flex; align-items:center; gap: var(--sp-3);">
+              <img id="newProductImagePreview" alt="Preview" hidden style="width:52px;height:66px;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,53,.08);">
+              <button type="submit" class="btn btn-primary btn-sm" id="addProductSubmitBtn">Add Product</button>
+              <span class="muted" style="font-size:.78rem;">Leave image blank to use a placeholder photo.</span>
+            </div>
+          </form>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table>
+            <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th>Action</th></tr></thead>
+            <tbody id="productTableBody"><tr><td colspan="7" class="muted" style="padding:1.5rem;">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orders -->
+      <div id="panelOrders" class="admin-panel" hidden>
+        <h1 style="font-size:1.8rem;">Orders</h1>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead><tr><th>Order #</th><th>Date</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody id="orderTableBody"><tr><td colspan="6" class="muted" style="padding:1.5rem;">Loading…</td></tr></tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin-top: var(--sp-2); font-size:.78rem;">Change the dropdown in the Status column to update an order's fulfilment status.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

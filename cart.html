@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — Crease Edits</title>
+<meta name="description" content="Review items in your Crease Edits shopping cart.">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  .cart-line{ display:grid; grid-template-columns: 90px 1fr auto auto; gap: var(--sp-3); align-items:center; padding: var(--sp-3) 0; border-bottom:1px solid rgba(0,0,53,.08); }
+  .cart-line img{ width:90px; height:110px; object-fit:cover; border-radius:10px; }
+  .qty-control-sm{ display:flex; align-items:center; border:1.5px solid rgba(0,0,53,.16); border-radius:999px; width:fit-content; }
+  .qty-control-sm button{ width:32px; height:32px; background:none; border:none; }
+  .qty-control-sm input{ width:34px; text-align:center; border:none; }
+  @media (max-width:768px){ .cart-line{ grid-template-columns: 70px 1fr; } .cart-line .qty-cell, .cart-line .total-cell{ grid-column: 2; } }
+</style>
+</head>
+<body data-page="cart.html">
+  <div class="page-loader"><div class="mark">Crease Edits</div><div class="bar"></div></div>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Home</a> / Cart</div>
+        <p class="eyebrow" style="justify-content:center;">Step 1 of 3</p>
+        <h1>Your Cart</h1>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="container grid grid-2" style="align-items:start; grid-template-columns: 1.6fr 1fr;">
+        <div id="cartLines" class="glass-card" style="padding: var(--sp-4);"></div>
+
+        <div class="glass-card" style="padding: var(--sp-4); position:sticky; top: calc(var(--nav-h) + 20px);">
+          <h3>Order Summary</h3>
+          <div class="flex justify-between" style="padding:.4rem 0;"><span class="muted">Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+          <div class="flex justify-between" style="padding:.4rem 0;"><span class="muted">Shipping</span><span id="cartShipping">Free</span></div>
+          <div class="divider" style="margin: .8rem 0;"></div>
+          <div class="flex justify-between" style="font-weight:700; font-size:1.15rem;"><span>Total</span><span id="cartTotal">$0.00</span></div>
+          <a href="checkout.html" class="btn btn-primary btn-block" style="margin-top: var(--sp-3);" id="checkoutBtn">Proceed to Checkout</a>
+          <a href="shop.html" class="btn btn-ghost btn-block" style="margin-top: .6rem;">Continue Shopping</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("components:ready", renderCart);
+    document.addEventListener("cart:updated", renderCart);
+
+    function renderCart(){
+      const wrap = document.getElementById("cartLines");
+      const lines = CreaseEditsCart.lines();
+      if (!lines.length){
+        wrap.innerHTML = `<div class="empty-state">
+          <div class="icon">🛍️</div>
+          <h3>Your cart is empty</h3>
+          <p class="muted">Looks like you haven't added anything yet.</p>
+          <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+        </div>`;
+        document.getElementById("checkoutBtn").setAttribute("aria-disabled","true");
+        document.getElementById("checkoutBtn").style.pointerEvents = "none";
+        document.getElementById("checkoutBtn").style.opacity = ".5";
+      } else {
+        wrap.innerHTML = lines.map(l => `
+          <div class="cart-line" data-index="${l.index}">
+            <img src="${l.product.images[0]}" alt="${l.product.name}">
+            <div>
+              <h3 style="margin:0; font-size:1rem;"><a href="product.html?id=${l.product.id}">${l.product.name}</a></h3>
+              <div class="muted" style="font-size:.82rem;">${l.item.size||''} ${l.item.color?'· '+l.item.color:''}</div>
+              <div class="price" style="font-size:.95rem;">$${l.product.price}</div>
+            </div>
+            <div class="qty-cell qty-control-sm">
+              <button type="button" data-action="dec" aria-label="Decrease quantity">−</button>
+              <input type="text" readonly value="${l.item.qty}" aria-label="Quantity">
+              <button type="button" data-action="inc" aria-label="Increase quantity">+</button>
+            </div>
+            <div class="total-cell flex items-center gap-3">
+              <strong>$${l.lineTotal.toFixed(2)}</strong>
+              <button type="button" class="icon-btn" data-action="remove" aria-label="Remove item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0-1 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 6"/></svg>
+              </button>
+            </div>
+          </div>`).join("");
+        document.getElementById("checkoutBtn").style.pointerEvents = "";
+        document.getElementById("checkoutBtn").style.opacity = "";
+
+        wrap.querySelectorAll("[data-action]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const line = btn.closest(".cart-line");
+            const index = Number(line.dataset.index);
+            const current = CreaseEditsCart.lines().find(l=>l.index===index);
+            if (!current) return;
+            if (btn.dataset.action === "inc") CreaseEditsCart.updateQty(index, current.item.qty + 1);
+            if (btn.dataset.action === "dec") CreaseEditsCart.updateQty(index, current.item.qty - 1);
+            if (btn.dataset.action === "remove") CreaseEditsCart.remove(index);
+          });
+        });
+      }
+
+      const subtotal = CreaseEditsCart.subtotal();
+      const shipping = subtotal > 100 || subtotal === 0 ? 0 : 9.95;
+      document.getElementById("cartSubtotal").textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById("cartShipping").textContent = shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`;
+      document.getElementById("cartTotal").textContent = `$${(subtotal+shipping).toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

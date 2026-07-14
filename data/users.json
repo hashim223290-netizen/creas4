@@ -1,0 +1,10 @@
+[
+  {
+    "id": "u_admin",
+    "name": "Store Admin",
+    "email": "admin@creaseedits.pk",
+    "passwordHash": "6a6abdd72ae648a7b53ef79201fa4190:15be5296b3c70a9232ba2dba9477dc6319b6db4151feef6d53f0564f5000333310f86222c78025ea8f95a524cb01812b5f588c76738a0c27602176376d0b86d8",
+    "role": "admin",
+    "createdAt": "2026-07-14T02:49:20.632Z"
+  }
+]
