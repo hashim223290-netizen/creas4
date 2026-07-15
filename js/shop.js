@@ -129,7 +129,7 @@
     let state = {
       q: "",
       categories: fixedCategory ? [fixedCategory] : [],
-      maxPrice: 300,
+      maxPrice: 100000,
       sort: "featured"
     };
 
@@ -172,7 +172,7 @@
     if (sortSelect) sortSelect.addEventListener("change", (e) => { state.sort = e.target.value; apply(); });
     if (priceRange) priceRange.addEventListener("input", (e) => {
       state.maxPrice = Number(e.target.value);
-      if (priceOutput) priceOutput.textContent = `$${state.maxPrice}`;
+      if (priceOutput) priceOutput.textContent = state.maxPrice.toLocaleString();
       apply();
     });
     if (!fixedCategory && categoryChecks.length){
@@ -183,11 +183,11 @@
     }
     if (clearBtn){
       clearBtn.addEventListener("click", () => {
-        state = { q:"", categories: fixedCategory ? [fixedCategory] : [], maxPrice:300, sort:"featured" };
+        state = { q:"", categories: fixedCategory ? [fixedCategory] : [], maxPrice:100000, sort:"featured" };
         if (searchInput) searchInput.value = "";
         if (sortSelect) sortSelect.value = "featured";
         if (priceRange) priceRange.value = 300;
-        if (priceOutput) priceOutput.textContent = "$300";
+        if (priceOutput) priceOutput.textContent = "100000";
         categoryChecks.forEach(cb => cb.checked = false);
         apply();
       });

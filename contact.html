@@ -106,19 +106,39 @@
   <script>
     document.addEventListener("components:ready", () => {
       const form = document.getElementById("contactForm");
-      form.addEventListener("submit", (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
         let ok = true;
         [["contactName",""],["contactEmail",""],["contactMessage",""]].forEach(([id]) => {
           const field = document.getElementById(id);
           const wrap = field.closest(".form-field");
-          const valid = id === "contactEmail" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value) : field.value.trim().length > 0;
+          const valid = id === "contactEmail"
+            ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)
+            : field.value.trim().length > 0;
           wrap.classList.toggle("has-error", !valid);
           if (!valid) ok = false;
         });
         if (!ok) return;
-        document.getElementById("contactSuccess").hidden = false;
-        form.reset();
+
+        const btn = form.querySelector("button[type=submit]");
+        const origText = btn ? btn.textContent : "";
+        if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+
+        try {
+          if (window.CEApi) {
+            await window.CEApi.sendContact({
+              name:    document.getElementById("contactName").value.trim(),
+              email:   document.getElementById("contactEmail").value.trim(),
+              subject: (document.getElementById("contactSubject") || {}).value || "General enquiry",
+              message: document.getElementById("contactMessage").value.trim(),
+            });
+          }
+          document.getElementById("contactSuccess").hidden = false;
+          form.reset();
+        } catch (err) {
+          window.ceToast && window.ceToast(err.message || "Could not send your message. Please try again.");
+          if (btn) { btn.disabled = false; btn.textContent = origText; }
+        }
       });
     });
   </script>

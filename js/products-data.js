@@ -21,7 +21,13 @@ let BEST_SELLERS = [];
 let SALE_ITEMS = [];
 
 function recomputeProductLists() {
-  NEW_ARRIVALS = PRODUCTS.filter((p) => p.tags && p.tags.includes("new"));
+  const tagged = PRODUCTS.filter((p) => p.tags && p.tags.includes("new"));
+  // Fall back to the most recently added products if nothing is explicitly
+  // tagged "new" yet, so the New Arrivals rail is never empty on a catalog
+  // that predates the "new" tag.
+  NEW_ARRIVALS = tagged.length
+    ? tagged
+    : [...PRODUCTS].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   BEST_SELLERS = PRODUCTS.filter((p) => p.tags && p.tags.includes("bestseller"));
   SALE_ITEMS = PRODUCTS.filter((p) => p.tags && p.tags.includes("sale"));
 }

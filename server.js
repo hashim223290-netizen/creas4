@@ -3,17 +3,14 @@
  * Crease Edits — Express backend.
  *
  * Serves the static frontend (the .html/css/js files at the project root)
- * AND the REST API under /api/*. Session-based auth (no JWT) using
- * express-session with an in-memory store — swap the store for
- * connect-redis/connect-mongo etc. if this ever needs to run on more than
- * one server process.
+ * AND the REST API under /shop-api/*. Session-based auth using express-session.
  *
  * Run:
  *   npm install
  *   npm start
  * Then open http://localhost:3000
  *
- * Demo admin login (also in README.md):
+ * Demo admin login:
  *   email:    admin@creaseedits.pk
  *   password: cre@seEdits2026
  */
@@ -21,13 +18,13 @@ const path = require("path");
 const express = require("express");
 const session = require("express-session");
 
-const authRoutes = require("./routes/auth");
+const authRoutes    = require("./routes/auth");
 const productRoutes = require("./routes/products");
-const orderRoutes = require("./routes/orders");
-const reviewRoutes = require("./routes/reviews");
-const adminRoutes = require("./routes/admin");
+const orderRoutes   = require("./routes/orders");
+const reviewRoutes  = require("./routes/reviews");
+const adminRoutes   = require("./routes/admin");
 const contactRoutes = require("./routes/contact");
-const uploadRoutes = require("./routes/upload");
+const uploadRoutes  = require("./routes/upload");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,8 +32,6 @@ const PORT = process.env.PORT || 3000;
 // ---------------------------------------------------------------------------
 // Core middleware
 // ---------------------------------------------------------------------------
-// 10mb (not 1mb) because product image uploads arrive as base64 JSON —
-// a 5MB image becomes ~6.7MB once base64-encoded.
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
@@ -55,9 +50,9 @@ app.use(
   })
 );
 
-// Basic request log — handy while developing the admin panel / API.
+// Basic request log
 app.use((req, res, next) => {
-  if (req.path.startsWith("/api/")) {
+  if (req.path.startsWith("/shop-api/")) {
     console.log(`${new Date().toISOString()} ${req.method} ${req.path}`);
   }
   next();
@@ -66,25 +61,29 @@ app.use((req, res, next) => {
 // ---------------------------------------------------------------------------
 // API routes
 // ---------------------------------------------------------------------------
-app.use("/shop-api/auth", authRoutes);
+app.use("/shop-api/auth",     authRoutes);
 app.use("/shop-api/products", productRoutes);
-app.use("/shop-api/orders", orderRoutes);
-app.use("/shop-api/reviews", reviewRoutes);
-app.use("/shop-api/admin", adminRoutes);
-app.use("/shop-api/contact", contactRoutes);
-app.use("/shop-api/upload", uploadRoutes);
+app.use("/shop-api/orders",   orderRoutes);
+app.use("/shop-api/reviews",  reviewRoutes);
+app.use("/shop-api/admin",    adminRoutes);
+app.use("/shop-api/contact",  contactRoutes);
+app.use("/shop-api/upload",   uploadRoutes);
 
-app.get("/shop-api/health", (req, res) => res.json({ ok: true, time: new Date().toISOString() }));
+app.get("/shop-api/health", (req, res) =>
+  res.json({ ok: true, time: new Date().toISOString() })
+);
 
-// Unknown API route -> JSON 404 (kept separate from the HTML 404 page below)
-app.use("/shop-api", (req, res) => res.status(404).json({ error: "API route not found." }));
+// Unknown API route -> JSON 404
+app.use("/shop-api", (req, res) =>
+  res.status(404).json({ error: "API route not found." })
+);
 
 // ---------------------------------------------------------------------------
 // Static frontend
 // ---------------------------------------------------------------------------
 app.use(express.static(path.join(__dirname), { extensions: ["html"] }));
 
-// Any other unmatched (non-API) route -> the styled 404 page
+// Any other unmatched route -> styled 404 page
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "404.html"));
 });

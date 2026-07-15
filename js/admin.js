@@ -183,33 +183,128 @@
 
   const ORDER_STATUSES = ["pending", "processing", "shipped", "delivered", "cancelled"];
 
+  /* ---- Order Detail Modal ---- */
+  function openOrderModal(order){
+    const modal = document.getElementById("orderModal");
+    const content = document.getElementById("orderModalContent");
+    if (!modal || !content) return;
+
+    const c = order.customer || {};
+    const s = order.shipping || {};
+    const itemRows = (order.items || []).map(i =>
+      `<tr>
+        <td style="padding:.5rem .4rem;">${i.name}</td>
+        <td style="padding:.5rem .4rem; text-align:center;">${i.size || "—"}</td>
+        <td style="padding:.5rem .4rem; text-align:center;">${i.qty}</td>
+        <td style="padding:.5rem .4rem; text-align:right;">Rs. ${(i.price * i.qty).toLocaleString()}</td>
+      </tr>`).join("");
+
+    content.innerHTML = `
+      <h2 style="margin-bottom:var(--sp-3); font-size:1.3rem;">Order #${order.id}</h2>
+
+      <h4 style="margin-bottom:.5rem; font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:#888;">Customer Information</h4>
+      <div style="background:rgba(0,0,53,.03); border-radius:10px; padding:1rem 1.2rem; margin-bottom:var(--sp-3);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.5rem .8rem; font-size:.88rem;">
+          <div><span style="color:#888;">Name</span><br><strong>${c.name || "—"}</strong></div>
+          <div><span style="color:#888;">Email</span><br><strong>${c.email || "—"}</strong></div>
+          <div><span style="color:#888;">Phone</span><br><strong>${c.phone || "—"}</strong></div>
+          <div><span style="color:#888;">Payment</span><br><strong>${order.paymentMethod || "Cash on Delivery"}</strong></div>
+        </div>
+      </div>
+
+      <h4 style="margin-bottom:.5rem; font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:#888;">Delivery Address</h4>
+      <div style="background:rgba(0,0,53,.03); border-radius:10px; padding:1rem 1.2rem; margin-bottom:var(--sp-3); font-size:.88rem;">
+        <strong>${s.address || "—"}</strong><br>
+        ${s.city || ""}${s.city && s.zip ? ", " : ""}${s.zip || ""}
+      </div>
+
+      <h4 style="margin-bottom:.5rem; font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:#888;">Items Ordered</h4>
+      <table style="font-size:.85rem; margin-bottom:var(--sp-3);">
+        <thead><tr>
+          <th style="padding:.5rem .4rem;">Product</th>
+          <th style="padding:.5rem .4rem; text-align:center;">Size</th>
+          <th style="padding:.5rem .4rem; text-align:center;">Qty</th>
+          <th style="padding:.5rem .4rem; text-align:right;">Price</th>
+        </tr></thead>
+        <tbody>${itemRows}</tbody>
+      </table>
+
+      <div style="display:flex; justify-content:space-between; font-size:.88rem; padding:.3rem 0; border-top:1px solid rgba(0,0,53,.08); margin-top:.4rem;">
+        <span class="muted">Subtotal</span><span>Rs. ${(order.subtotal||0).toLocaleString()}</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:.88rem; padding:.3rem 0;">
+        <span class="muted">Shipping</span><span>${(order.shippingCost||0) === 0 ? "Free" : "Rs. "+(order.shippingCost||0).toLocaleString()}</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-weight:700; font-size:1rem; padding:.6rem 0; border-top:2px solid rgba(0,0,53,.12); margin-top:.3rem;">
+        <span>Total</span><span>Rs. ${(order.total||0).toLocaleString()}</span>
+      </div>
+      <div style="margin-top:var(--sp-3); font-size:.82rem; color:#888;">
+        Placed on ${new Date(order.createdAt).toLocaleString()} &nbsp;·&nbsp;
+        Status: <strong style="text-transform:capitalize;">${order.status}</strong>
+      </div>`;
+
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeOrderModal(){
+    const modal = document.getElementById("orderModal");
+    if (modal) modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+
   async function renderOrdersTable(){
     const tbody = document.getElementById("orderTableBody");
     if (!tbody) return;
+
+    // Wire modal close buttons (once)
+    const closeBtn = document.getElementById("orderModalClose");
+    if (closeBtn && !closeBtn._wired) {
+      closeBtn.addEventListener("click", closeOrderModal);
+      closeBtn._wired = true;
+      document.getElementById("orderModal").addEventListener("click", (e) => {
+        if (e.target === e.currentTarget) closeOrderModal();
+      });
+    }
+
     let orders = [];
     try {
       ({ orders } = await window.CEApi.myOrders()); // admin session -> returns ALL orders
     } catch (err) {
-      tbody.innerHTML = `<tr><td colspan="6" class="muted" style="padding:1.5rem;">Could not load orders.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="8" class="muted" style="padding:1.5rem;">Could not load orders.</td></tr>`;
       return;
     }
     if (!orders.length){
-      tbody.innerHTML = `<tr><td colspan="6" class="muted" style="padding:1.5rem;">No orders placed yet.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="8" class="muted" style="padding:1.5rem;">No orders placed yet.</td></tr>`;
       return;
     }
-    tbody.innerHTML = orders.map(o => `
+
+    // Store orders for modal lookup
+    const orderMap = {};
+    orders.forEach(o => orderMap[o.id] = o);
+
+    tbody.innerHTML = orders.map(o => {
+      const itemList = (o.items||[]).map(i =>
+        `<div style="font-size:.8rem; line-height:1.5;">
+          <span style="font-weight:600;">${i.name}</span>
+          <span class="muted"> × ${i.qty}${i.size ? " · " + i.size : ""}</span>
+        </div>`).join("");
+      return `
       <tr data-order-row="${o.id}">
-        <td>#${o.id}</td>
-        <td>${new Date(o.createdAt).toLocaleDateString()}</td>
-        <td>${o.customer ? o.customer.name : "—"}</td>
-        <td>${o.items.reduce((s,i)=>s+i.qty,0)}</td>
-        <td>$${o.total.toFixed(2)}</td>
+        <td style="white-space:nowrap;">#${o.id}</td>
+        <td style="white-space:nowrap;">${new Date(o.createdAt).toLocaleDateString()}</td>
+        <td style="white-space:nowrap;">${o.customer ? o.customer.name : "—"}</td>
+        <td style="white-space:nowrap;">${o.customer ? (o.customer.phone || "—") : "—"}</td>
+        <td style="min-width:180px;">${itemList}</td>
+        <td style="white-space:nowrap;">Rs. ${(o.total||0).toLocaleString()}</td>
         <td>
           <select class="order-status-select" data-order-id="${o.id}" style="text-transform:capitalize; padding:.4rem .6rem; border-radius:8px; border:1px solid rgba(0,0,53,.12);">
             ${ORDER_STATUSES.map(s => `<option value="${s}" ${s === o.status ? "selected" : ""}>${s[0].toUpperCase()}${s.slice(1)}</option>`).join("")}
           </select>
         </td>
-      </tr>`).join("");
+        <td><button class="btn btn-sm btn-outline" data-view-order="${o.id}" style="white-space:nowrap;">View</button></td>
+      </tr>`;
+    }).join("");
 
     tbody.querySelectorAll(".order-status-select").forEach(select => {
       select.addEventListener("change", async () => {
@@ -229,6 +324,13 @@
         }
       });
       select.dataset.prevValue = select.value;
+    });
+
+    tbody.querySelectorAll("[data-view-order]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const order = orderMap[btn.dataset.viewOrder];
+        if (order) openOrderModal(order);
+      });
     });
   }
 })();

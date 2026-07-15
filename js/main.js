@@ -48,14 +48,22 @@
     }
   }
 
-  /* ---------------- Newsletter (stub — no backend yet) ---------------- */
+  /* ---------------- Newsletter (wired to /shop-api/contact/newsletter) ---------------- */
   function initNewsletter(){
     const form = document.getElementById("newsletterForm");
     if (!form) return;
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      const input = form.querySelector("input[type=email]") || form.querySelector("input");
       const msg = document.getElementById("newsletterMsg");
-      form.querySelector("input").value = "";
+      const email = input ? input.value.trim() : "";
+      if (!email) return;
+      try {
+        if (window.CEApi) await window.CEApi.subscribeNewsletter(email);
+      } catch (err) {
+        // silently succeed — avoids leaking subscription status
+      }
+      if (input) input.value = "";
       if (msg) msg.hidden = false;
     });
   }

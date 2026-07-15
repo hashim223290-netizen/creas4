@@ -1,13 +1,12 @@
 {
-  "name": "@workspace/clothes2",
+  "name": "crease-edits",
   "version": "1.0.0",
   "private": true,
   "description": "Crease Edits — full-stack e-commerce site (Node.js + Express, JSON file database).",
   "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
-    "build": "echo 'no build step'",
-    "serve": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "dependencies": {
     "express": "^4.19.2",

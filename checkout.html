@@ -13,9 +13,9 @@
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/responsive.css">
 <style>
-  .pay-tabs{ display:flex; gap:.6rem; margin-bottom: var(--sp-3); flex-wrap:wrap; }
-  .pay-tab{ padding:.7rem 1.2rem; border-radius:10px; border:1.5px solid rgba(0,0,53,.14); background:#fff; font-weight:600; font-size:.85rem; }
-  .pay-tab.is-active{ border-color:var(--ink); background:var(--ink); color:var(--cream); }
+  .cod-badge{ display:flex; align-items:center; gap:.8rem; background:rgba(0,0,53,.04); border:1.5px solid rgba(0,0,53,.1); border-radius:12px; padding:1rem 1.2rem; margin-top:.4rem; }
+  .cod-badge .cod-icon{ font-size:1.6rem; flex-shrink:0; }
+  .cod-badge p{ margin:0; font-size:.88rem; }
 </style>
 </head>
 <body data-page="checkout.html">
@@ -68,34 +68,11 @@
           </div>
 
           <h3 style="margin-top: var(--sp-4);">Payment Method</h3>
-          <div class="pay-tabs">
-            <button type="button" class="pay-tab is-active" data-target="payCard">Card</button>
-            <button type="button" class="pay-tab" data-target="payCod">Cash on Delivery</button>
-            <button type="button" class="pay-tab" data-target="payWallet">Mobile Wallet</button>
-          </div>
-          <div id="payCard" class="pay-panel">
-            <div class="form-field">
-              <label for="ckCardNumber">Card number</label>
-              <input type="text" id="ckCardNumber" placeholder="•••• •••• •••• ••••">
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="ckExpiry">Expiry</label>
-                <input type="text" id="ckExpiry" placeholder="MM/YY">
-              </div>
-              <div class="form-field">
-                <label for="ckCvv">CVV</label>
-                <input type="text" id="ckCvv" placeholder="•••">
-              </div>
-            </div>
-          </div>
-          <div id="payCod" class="pay-panel" hidden>
-            <p class="muted">Pay in cash when your order arrives. A small COD handling fee may apply.</p>
-          </div>
-          <div id="payWallet" class="pay-panel" hidden>
-            <div class="form-field">
-              <label for="ckWalletNumber">Wallet number</label>
-              <input type="text" id="ckWalletNumber" placeholder="03XX XXXXXXX">
+          <div class="cod-badge">
+            <span class="cod-icon">💵</span>
+            <div>
+              <strong>Cash on Delivery</strong>
+              <p class="muted">Pay in cash when your order arrives at your door. No card required.</p>
             </div>
           </div>
 

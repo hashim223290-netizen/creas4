@@ -13,7 +13,6 @@
     const summary = document.getElementById("checkoutSummary");
     if (!summary) return;
     renderSummary();
-    wirePaymentTabs();
     wireForm();
   }
 
@@ -34,27 +33,16 @@
             <div class="muted" style="font-size:.78rem;">${l.item.size||''} ${l.item.color? '· '+l.item.color:''} · Qty ${l.item.qty}</div>
           </div>
         </div>
-        <div style="font-weight:600;">$${l.lineTotal.toFixed(2)}</div>
+        <div style="font-weight:600;">Rs. ${l.lineTotal.toLocaleString()}</div>
       </div>`).join("");
 
     const subtotal = window.CreaseEditsCart.subtotal();
-    const shipping = subtotal > 100 ? 0 : 9.95;
-    const tax = subtotal * 0.05;
-    const total = subtotal + shipping + tax;
-    document.getElementById("sumSubtotal").textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById("sumShipping").textContent = shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`;
-    document.getElementById("sumTax").textContent = `$${tax.toFixed(2)}`;
-    document.getElementById("sumTotal").textContent = `$${total.toFixed(2)}`;
-  }
-
-  function wirePaymentTabs(){
-    const tabs = document.querySelectorAll(".pay-tab");
-    tabs.forEach(tab => tab.addEventListener("click", () => {
-      tabs.forEach(t => t.classList.remove("is-active"));
-      tab.classList.add("is-active");
-      document.querySelectorAll(".pay-panel").forEach(p => p.hidden = true);
-      document.getElementById(tab.dataset.target).hidden = false;
-    }));
+    const shipping = subtotal > 5000 ? 0 : 200;
+    const total = subtotal + shipping;
+    document.getElementById("sumSubtotal").textContent = `Rs. ${subtotal.toLocaleString()}`;
+    document.getElementById("sumShipping").textContent = shipping === 0 ? "Free" : `Rs. ${shipping.toLocaleString()}`;
+    document.getElementById("sumTax").textContent = `—`;
+    document.getElementById("sumTotal").textContent = `Rs. ${total.toLocaleString()}`;
   }
 
   function wireForm(){
@@ -76,10 +64,8 @@
       const lines = window.CreaseEditsCart.lines();
       if (!lines.length){ window.ceToast && window.ceToast("Your cart is empty"); return; }
 
-      const activeTab = document.querySelector(".pay-tab.is-active");
-      const paymentMethod = activeTab ? activeTab.textContent.trim() : "Card";
-
       const payload = {
+        paymentMethod: "Cash on Delivery",
         items: lines.map(l => ({ id: l.product.id, qty: l.item.qty, size: l.item.size, color: l.item.color })),
         customer: {
           name: document.getElementById("ckName").value,
@@ -91,7 +77,6 @@
           city: document.getElementById("ckCity").value,
           zip: document.getElementById("ckZip").value,
         },
-        paymentMethod,
       };
 
       const btn = document.getElementById("placeOrderBtn");

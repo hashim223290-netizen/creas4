@@ -98,12 +98,20 @@
         <h1 style="font-size:1.8rem;">Orders</h1>
         <div style="overflow-x:auto;">
           <table>
-            <thead><tr><th>Order #</th><th>Date</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
-            <tbody id="orderTableBody"><tr><td colspan="6" class="muted" style="padding:1.5rem;">Loading…</td></tr></tbody>
+            <thead><tr><th>Order #</th><th>Date</th><th>Customer</th><th>Phone</th><th>Items</th><th>Total</th><th>Status</th><th>Details</th></tr></thead>
+            <tbody id="orderTableBody"><tr><td colspan="8" class="muted" style="padding:1.5rem;">Loading…</td></tr></tbody>
           </table>
         </div>
-        <p class="muted" style="margin-top: var(--sp-2); font-size:.78rem;">Change the dropdown in the Status column to update an order's fulfilment status.</p>
+        <p class="muted" style="margin-top: var(--sp-2); font-size:.78rem;">Change the dropdown in the Status column to update an order's fulfilment status. Click View to see full customer and order details.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- Order Detail Modal -->
+  <div id="orderModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,53,.45); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:1rem;">
+    <div style="background:#fff; border-radius:16px; max-width:560px; width:100%; max-height:90vh; overflow-y:auto; padding: var(--sp-5); position:relative; box-shadow: 0 24px 64px rgba(0,0,53,.18);">
+      <button id="orderModalClose" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--ink); line-height:1;">✕</button>
+      <div id="orderModalContent"></div>
     </div>
   </div>
 

@@ -48,7 +48,7 @@ router.post(
   requireAdmin,
   requireFields(["name", "category", "price"]),
   (req, res) => {
-    const { name, category, price, stock, images, colors, sizes, desc, oldPrice } = req.body;
+    const { name, category, price, stock, images, colors, sizes, desc, oldPrice, tags } = req.body;
 
     if (!isNonEmptyString(name)) return res.status(400).json({ error: "Product name is required." });
     if (!isPositiveNumber(Number(price))) return res.status(400).json({ error: "Price must be a positive number." });
@@ -63,7 +63,10 @@ router.post(
       stock: Number(stock) || 0,
       rating: 0,
       reviews: 0,
-      tags: [],
+      // Respect admin-supplied tags (e.g. "sale", "bestseller"); every newly
+      // added product is also tagged "new" by default so it shows up in the
+      // homepage's New Arrivals rail, matching a real storefront's behaviour.
+      tags: Array.isArray(tags) && tags.length ? Array.from(new Set([...tags, "new"])) : ["new"],
       colors: Array.isArray(colors) && colors.length ? colors : ["Default"],
       sizes: Array.isArray(sizes) && sizes.length ? sizes : ["One Size"],
       images: Array.isArray(images) && images.length ? images : [`https://picsum.photos/seed/${Date.now()}/700/900`],

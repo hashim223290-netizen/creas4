@@ -8,11 +8,24 @@
     "stock": 10,
     "rating": 0,
     "reviews": 0,
-    "tags": ["bestseller", "sale"],
-    "colors": ["Charcoal", "Sand"],
-    "sizes": ["30", "32", "34", "36"],
-    "images": ["/uploads/img_mrkunr7k_oa99dy.jpg"],
-    "desc": "A tailored straight-leg trouser cut from mid-weight cotton twill — sits clean at the waist and holds its crease through a full day.",
+    "tags": [
+      "bestseller",
+      "sale"
+    ],
+    "colors": [
+      "Charcoal",
+      "Sand"
+    ],
+    "sizes": [
+      "30",
+      "32",
+      "34",
+      "36"
+    ],
+    "images": [
+      "/uploads/img_mrkunr7k_oa99dy.jpg"
+    ],
+    "desc": "A tailored straight-leg trouser cut from mid-weight cotton twill \u2014 sits clean at the waist and holds its crease through a full day.",
     "createdAt": "2026-07-10T16:12:33.653Z"
   },
   {
@@ -24,10 +37,22 @@
     "stock": 14,
     "rating": 0,
     "reviews": 0,
-    "tags": ["new"],
-    "colors": ["White", "Sky Blue"],
-    "sizes": ["S", "M", "L", "XL"],
-    "images": ["/uploads/img_mrkuoym6_o172h5.jpg"],
+    "tags": [
+      "new"
+    ],
+    "colors": [
+      "White",
+      "Sky Blue"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/uploads/img_mrkuoym6_o172h5.jpg"
+    ],
     "desc": "A classic button-down Oxford shirt woven from breathable long-staple cotton, built for the office and the weekend alike.",
     "createdAt": "2026-07-12T16:13:29.894Z"
   },
@@ -40,11 +65,23 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "tags": ["bestseller"],
-    "colors": ["Navy", "Charcoal"],
-    "sizes": ["38", "40", "42", "44"],
-    "images": ["https://picsum.photos/seed/men-blazer/700/900"],
-    "desc": "A structured two-button blazer in a soft wool blend — half-canvassed for a shape that improves with wear.",
+    "tags": [
+      "bestseller"
+    ],
+    "colors": [
+      "Navy",
+      "Charcoal"
+    ],
+    "sizes": [
+      "38",
+      "40",
+      "42",
+      "44"
+    ],
+    "images": [
+      "https://picsum.photos/seed/men-blazer/700/900"
+    ],
+    "desc": "A structured two-button blazer in a soft wool blend \u2014 half-canvassed for a shape that improves with wear.",
     "createdAt": "2026-06-28T10:00:00.000Z"
   },
   {
@@ -57,10 +94,21 @@
     "rating": 0,
     "reviews": 0,
     "tags": [],
-    "colors": ["Indigo", "Black"],
-    "sizes": ["30", "32", "34", "36", "38"],
-    "images": ["https://picsum.photos/seed/men-denim/700/900"],
-    "desc": "Slim-fit denim in a comfort-stretch weave — enough give to move, enough structure to hold shape.",
+    "colors": [
+      "Indigo",
+      "Black"
+    ],
+    "sizes": [
+      "30",
+      "32",
+      "34",
+      "36",
+      "38"
+    ],
+    "images": [
+      "https://picsum.photos/seed/men-denim/700/900"
+    ],
+    "desc": "Slim-fit denim in a comfort-stretch weave \u2014 enough give to move, enough structure to hold shape.",
     "createdAt": "2026-06-20T10:00:00.000Z"
   },
   {
@@ -72,11 +120,24 @@
     "stock": 9,
     "rating": 0,
     "reviews": 0,
-    "tags": ["bestseller", "sale"],
-    "colors": ["Emerald", "Black"],
-    "sizes": ["XS", "S", "M", "L"],
-    "images": ["https://picsum.photos/seed/women-dress/700/900"],
-    "desc": "A fluid wrap midi dress in a matte crepe that skims rather than clings — one dress, endless occasions.",
+    "tags": [
+      "bestseller",
+      "sale"
+    ],
+    "colors": [
+      "Emerald",
+      "Black"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "images": [
+      "https://picsum.photos/seed/women-dress/700/900"
+    ],
+    "desc": "A fluid wrap midi dress in a matte crepe that skims rather than clings \u2014 one dress, endless occasions.",
     "createdAt": "2026-07-05T10:00:00.000Z"
   },
   {
@@ -88,11 +149,24 @@
     "stock": 11,
     "rating": 0,
     "reviews": 0,
-    "tags": ["new"],
-    "colors": ["Camel", "Black"],
-    "sizes": ["XS", "S", "M", "L", "XL"],
-    "images": ["https://picsum.photos/seed/women-blazer/700/900"],
-    "desc": "A sharply tailored single-button blazer with a nipped waist — worn open over everything from denim to silk.",
+    "tags": [
+      "new"
+    ],
+    "colors": [
+      "Camel",
+      "Black"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "https://picsum.photos/seed/women-blazer/700/900"
+    ],
+    "desc": "A sharply tailored single-button blazer with a nipped waist \u2014 worn open over everything from denim to silk.",
     "createdAt": "2026-07-08T10:00:00.000Z"
   },
   {
@@ -105,9 +179,20 @@
     "rating": 0,
     "reviews": 0,
     "tags": [],
-    "colors": ["Ivory", "Terracotta", "Black"],
-    "sizes": ["XS", "S", "M", "L"],
-    "images": ["https://picsum.photos/seed/women-knit/700/900"],
+    "colors": [
+      "Ivory",
+      "Terracotta",
+      "Black"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "images": [
+      "https://picsum.photos/seed/women-knit/700/900"
+    ],
     "desc": "A second-skin ribbed knit top in a soft modal blend, cut with a flattering scoop neck.",
     "createdAt": "2026-06-15T10:00:00.000Z"
   },
@@ -120,11 +205,23 @@
     "stock": 13,
     "rating": 0,
     "reviews": 0,
-    "tags": ["sale"],
-    "colors": ["Black", "Stone"],
-    "sizes": ["XS", "S", "M", "L"],
-    "images": ["https://picsum.photos/seed/women-trouser/700/900"],
-    "desc": "A high-rise wide-leg trouser with a fluid drape — dresses up a simple tee, dresses down a blazer.",
+    "tags": [
+      "sale"
+    ],
+    "colors": [
+      "Black",
+      "Stone"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "images": [
+      "https://picsum.photos/seed/women-trouser/700/900"
+    ],
+    "desc": "A high-rise wide-leg trouser with a fluid drape \u2014 dresses up a simple tee, dresses down a blazer.",
     "createdAt": "2026-06-30T10:00:00.000Z"
   },
   {
@@ -136,11 +233,24 @@
     "stock": 8,
     "rating": 0,
     "reviews": 0,
-    "tags": ["bestseller"],
-    "colors": ["Chestnut", "Black"],
-    "sizes": ["7", "8", "9", "10", "11"],
-    "images": ["https://picsum.photos/seed/shoes-derby/700/900"],
-    "desc": "A full-grain leather derby with a hand-finished sole — built to be resoled, not replaced.",
+    "tags": [
+      "bestseller"
+    ],
+    "colors": [
+      "Chestnut",
+      "Black"
+    ],
+    "sizes": [
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "images": [
+      "https://picsum.photos/seed/shoes-derby/700/900"
+    ],
+    "desc": "A full-grain leather derby with a hand-finished sole \u2014 built to be resoled, not replaced.",
     "createdAt": "2026-06-22T10:00:00.000Z"
   },
   {
@@ -152,11 +262,26 @@
     "stock": 16,
     "rating": 0,
     "reviews": 0,
-    "tags": ["sale", "new"],
-    "colors": ["White", "Off-White"],
-    "sizes": ["6", "7", "8", "9", "10", "11"],
-    "images": ["https://picsum.photos/seed/shoes-sneaker/700/900"],
-    "desc": "A clean-lined leather sneaker with a cushioned cork footbed — pairs with everything from denim to tailoring.",
+    "tags": [
+      "sale",
+      "new"
+    ],
+    "colors": [
+      "White",
+      "Off-White"
+    ],
+    "sizes": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "images": [
+      "https://picsum.photos/seed/shoes-sneaker/700/900"
+    ],
+    "desc": "A clean-lined leather sneaker with a cushioned cork footbed \u2014 pairs with everything from denim to tailoring.",
     "createdAt": "2026-07-11T10:00:00.000Z"
   },
   {
@@ -169,10 +294,21 @@
     "rating": 0,
     "reviews": 0,
     "tags": [],
-    "colors": ["Taupe", "Black"],
-    "sizes": ["7", "8", "9", "10", "11"],
-    "images": ["https://picsum.photos/seed/shoes-boot/700/900"],
-    "desc": "An elastic-sided suede Chelsea boot on a stacked leather heel — the one boot that works with everything.",
+    "colors": [
+      "Taupe",
+      "Black"
+    ],
+    "sizes": [
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "images": [
+      "https://picsum.photos/seed/shoes-boot/700/900"
+    ],
+    "desc": "An elastic-sided suede Chelsea boot on a stacked leather heel \u2014 the one boot that works with everything.",
     "createdAt": "2026-06-18T10:00:00.000Z"
   },
   {
@@ -184,11 +320,21 @@
     "stock": 30,
     "rating": 0,
     "reviews": 0,
-    "tags": ["new"],
-    "colors": ["Brown", "Black"],
-    "sizes": ["S/M", "L/XL"],
-    "images": ["https://picsum.photos/seed/acc-belt/700/900"],
-    "desc": "A full-grain leather belt with a solid brass buckle — it'll outlast the trousers it's holding up.",
+    "tags": [
+      "new"
+    ],
+    "colors": [
+      "Brown",
+      "Black"
+    ],
+    "sizes": [
+      "S/M",
+      "L/XL"
+    ],
+    "images": [
+      "https://picsum.photos/seed/acc-belt/700/900"
+    ],
+    "desc": "A full-grain leather belt with a solid brass buckle \u2014 it'll outlast the trousers it's holding up.",
     "createdAt": "2026-07-09T10:00:00.000Z"
   },
   {
@@ -200,11 +346,21 @@
     "stock": 5,
     "rating": 0,
     "reviews": 0,
-    "tags": ["bestseller", "sale"],
-    "colors": ["Cognac", "Black"],
-    "sizes": ["One Size"],
-    "images": ["https://picsum.photos/seed/acc-bag/700/900"],
-    "desc": "A structured tote in vegetable-tanned leather with an interior laptop sleeve — built for the daily commute.",
+    "tags": [
+      "bestseller",
+      "sale"
+    ],
+    "colors": [
+      "Cognac",
+      "Black"
+    ],
+    "sizes": [
+      "One Size"
+    ],
+    "images": [
+      "https://picsum.photos/seed/acc-bag/700/900"
+    ],
+    "desc": "A structured tote in vegetable-tanned leather with an interior laptop sleeve \u2014 built for the daily commute.",
     "createdAt": "2026-06-25T10:00:00.000Z"
   },
   {
@@ -217,9 +373,17 @@
     "rating": 0,
     "reviews": 0,
     "tags": [],
-    "colors": ["Charcoal", "Camel", "Burgundy"],
-    "sizes": ["One Size"],
-    "images": ["https://picsum.photos/seed/acc-scarf/700/900"],
+    "colors": [
+      "Charcoal",
+      "Camel",
+      "Burgundy"
+    ],
+    "sizes": [
+      "One Size"
+    ],
+    "images": [
+      "https://picsum.photos/seed/acc-scarf/700/900"
+    ],
     "desc": "A featherweight merino wool scarf, soft enough for bare skin and warm enough for winter commutes.",
     "createdAt": "2026-06-12T10:00:00.000Z"
   },
@@ -232,11 +396,249 @@
     "stock": 18,
     "rating": 0,
     "reviews": 0,
-    "tags": ["new"],
-    "colors": ["Tortoise", "Black"],
-    "sizes": ["One Size"],
-    "images": ["https://picsum.photos/seed/acc-sunglasses/700/900"],
-    "desc": "Hand-polished Italian acetate sunglasses with polarised lenses — a warm-weather staple.",
+    "tags": [
+      "new"
+    ],
+    "colors": [
+      "Tortoise",
+      "Black"
+    ],
+    "sizes": [
+      "One Size"
+    ],
+    "images": [
+      "https://picsum.photos/seed/acc-sunglasses/700/900"
+    ],
+    "desc": "Hand-polished Italian acetate sunglasses with polarised lenses \u2014 a warm-weather staple.",
     "createdAt": "2026-07-01T10:00:00.000Z"
+  },
+  {
+    "id": "p_bestrage_tee",
+    "name": "Bestrage T Shirt",
+    "category": "men",
+    "price": 3999,
+    "oldPrice": 4499,
+    "stock": 20,
+    "rating": 0,
+    "reviews": 0,
+    "tags": [
+      "new",
+      "sale"
+    ],
+    "colors": [
+      "Black",
+      "White",
+      "Orange",
+      "Beige"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/uploads/img_bestrage_black.jpg",
+      "/uploads/img_bestrage_white.jpg",
+      "/uploads/img_bestrage_orange.jpg",
+      "/uploads/img_bestrage_beige.jpg"
+    ],
+    "desc": "A relaxed-fit cotton T-shirt with the Bestrage Studio chest logo and matching sleeve patch \u2014 soft handfeel, everyday wear.",
+    "createdAt": "2026-07-14T19:30:00.000Z"
+  },
+  {
+    "id": "p_nature_exploration_tee",
+    "name": "Nature Exploration T Shirt",
+    "category": "men",
+    "price": 3999,
+    "oldPrice": 4499,
+    "stock": 20,
+    "rating": 0,
+    "reviews": 0,
+    "tags": [
+      "new",
+      "sale"
+    ],
+    "colors": [
+      "Khaki",
+      "White",
+      "Black",
+      "Maroon"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/uploads/img_natureexploration_khaki_front.jpg",
+      "/uploads/img_natureexploration_white_front.jpg",
+      "/uploads/img_natureexploration_khaki_back.jpg",
+      "/uploads/img_natureexploration_black_front.jpg",
+      "/uploads/img_natureexploration_maroon_front.jpg"
+    ],
+    "desc": "A relaxed-fit cotton T-shirt with a minimal mountain logo on the chest and a full graphic 'Nature Exploration' map print on the back.",
+    "createdAt": "2026-07-14T19:40:00.000Z"
+  },
+  {
+    "id": "p_tshirt_imported",
+    "name": "T Shirt Imported",
+    "category": "men",
+    "price": 3999,
+    "oldPrice": 4499,
+    "stock": 20,
+    "rating": 0,
+    "reviews": 0,
+    "tags": [
+      "new",
+      "sale"
+    ],
+    "colors": [
+      "Light Blue",
+      "Black",
+      "Khaki"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/uploads/img_proteusbay_lightblue.jpg",
+      "/uploads/img_proteusbay_black.jpg",
+      "/uploads/img_proteusbay_khaki.jpg"
+    ],
+    "desc": "An imported cotton T-shirt with a chest patch graphic and a stitched panel line detail across the chest.",
+    "createdAt": "2026-07-14T19:45:00.000Z"
+  },
+  {
+    "id": "p_polo_lines_tee",
+    "name": "Polo Lines T-Shirts",
+    "category": "men",
+    "price": 3999,
+    "oldPrice": 4499,
+    "stock": 20,
+    "rating": 0,
+    "reviews": 0,
+    "tags": [
+      "new",
+      "sale"
+    ],
+    "colors": [
+      "Light",
+      "Black"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/uploads/img_polo_lines_light.jpg",
+      "/uploads/img_polo_lines_dark.jpg"
+    ],
+    "desc": "A pinstriped polo-style T-shirt with a clean crew neckline \u2014 subtle vertical line texture for an elevated everyday look.",
+    "createdAt": "2026-07-14T19:50:00.000Z"
+  },
+  {
+    "id": "p_mrm4l2x1",
+    "name": "Bestrage T-Shirt",
+    "category": "men",
+    "price": 3999,
+    "oldPrice": 4499,
+    "stock": 10,
+    "rating": 0,
+    "reviews": 0,
+    "tags": [
+      "sale"
+    ],
+    "colors": [
+      "Black",
+      "White",
+      "Orange",
+      "Beige"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/uploads/img_bestrage_black.jpg",
+      "/uploads/img_bestrage_white.jpg",
+      "/uploads/img_bestrage_orange.jpg",
+      "/uploads/img_bestrage_beige.jpg"
+    ],
+    "desc": "A Bestrage Studio graphic tee in soft cotton jersey, featuring the signature Neayen crest and \"Better Than Perfect\" print on the chest, with a matching patch on the sleeve.",
+    "createdAt": "2026-07-15T13:38:11.000Z"
+  },
+  {
+    "id": "p_mrm4ozoe",
+    "name": "Nature Exploration T-Shirt",
+    "category": "men",
+    "price": 3999,
+    "oldPrice": 4499,
+    "stock": 10,
+    "rating": 0,
+    "reviews": 0,
+    "tags": [
+      "sale"
+    ],
+    "colors": [
+      "Black",
+      "Khaki",
+      "Maroon",
+      "White"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/uploads/img_natureexploration_black_front.jpg",
+      "/uploads/img_natureexploration_khaki_front.jpg",
+      "/uploads/img_natureexploration_khaki_back.jpg",
+      "/uploads/img_natureexploration_maroon_front.jpg",
+      "/uploads/img_natureexploration_white_front.jpg"
+    ],
+    "desc": "A graphic Nature Exploration tee in soft cotton jersey, featuring an adventure-inspired print for everyday wear.",
+    "createdAt": "2026-07-15T13:41:13.000Z"
+  },
+  {
+    "id": "p_mrm4u3bh",
+    "name": "T-Shirt Imported",
+    "category": "men",
+    "price": 3999,
+    "oldPrice": 4499,
+    "stock": 10,
+    "rating": 0,
+    "reviews": 0,
+    "tags": [
+      "sale"
+    ],
+    "colors": [
+      "Black",
+      "Khaki",
+      "Light Blue"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/uploads/img_proteusbay_black.jpg",
+      "/uploads/img_proteusbay_khaki.jpg",
+      "/uploads/img_proteusbay_lightblue.jpg"
+    ],
+    "desc": "An imported cotton tee with a chest patch graphic and subtle contrast stitching detail across the chest.",
+    "createdAt": "2026-07-15T13:45:11.000Z"
   }
 ]
